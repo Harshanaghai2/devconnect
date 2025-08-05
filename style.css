@@ -49,3 +49,114 @@ button {
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+#repos {
+  margin-top: 40px;
+  padding: 20px;
+}
+
+#repos h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+#repos ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+#repos li {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#repos li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+#repos li a {
+  font-size: 1.1rem;
+  color: #0366d6;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#repos li a:hover {
+  text-decoration: underline;
+}
+
+.repo-stats {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #777;
+  gap: 10px;
+}
+
+.repo-stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.repo-desc {
+  margin-top: 6px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+#profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+#profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.profile-details h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.profile-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.profile-details a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.profile-details a:hover {
+  text-decoration: underline;
+}
+
