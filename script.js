@@ -33,30 +33,30 @@ function getProfile() {
 
 function getRepos(username) {
   const reposURL = `https://api.github.com/users/${username}/repos`;
+  const reposDiv = document.getElementById("repos");
 
   fetch(reposURL)
     .then(response => response.json())
-    .then(data => {
-   let repoList = "<h3>Top Repositories:</h3><ul>";
-data.slice(0, 6).forEach(repo => {
-  repoList += `
-    <li>
-      <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-      <div class="repo-desc">
-        ${repo.description || "No description provided."}
-      </div>
-      <div class="repo-stats">
-        <span>⭐ ${repo.stargazers_count}</span>
-        <span>📝 ${repo.language || "Unknown"}</span>
-      </div>
-    </li>
-  `;
-});
-repoList += "</ul>";
-document.getElementById("repos").innerHTML = repoList;
+    .then(repos => {
+      if (!Array.isArray(repos)) {
+        reposDiv.innerHTML = "<p>No repositories found.</p>";
+        return;
+      }
 
+      // Sort by stars descending and take top 3
+      const topRepos = repos
+        .sort((a, b) => b.stargazers_count - a.stargazers_count)
+        .slice(0, 3);
+
+      reposDiv.innerHTML = `<h3>Top Repositories:</h3>` + topRepos.map(repo => `
+        <div class="repo-card">
+          <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a> ⭐ ${repo.stargazers_count}</h4>
+          <p>${repo.description || "No description provided."}</p>
+        </div>
+      `).join("");
     })
     .catch(error => {
-      console.log("Error fetching repos:", error);
+      reposDiv.innerHTML = "<p>Error loading repositories.</p>";
     });
 }
+

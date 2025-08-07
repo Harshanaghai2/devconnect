@@ -7,24 +7,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <header>
-    <h1>DevConnect</h1>
-    <p>Enter your GitHub username to view your profile summary</p>
-  </header>
-
-  <main>
-    <div class="search-container">
+  <div class="container">
+    <h1>GitHub Profile Viewer</h1>
+    <div class="search-box">
       <input type="text" id="usernameInput" placeholder="Enter GitHub username">
-      <button onclick="getProfile()">Fetch Profile</button>
+      <button onclick="getProfile()">Get Profile</button>
     </div>
 
-    <div id="profile" class="profile-card">
-      <!-- GitHub profile info will be injected here -->
-    </div>
-    <div id="repos"></div>
+    <div id="profile" class="profile-card"></div>
 
-  </main>
+    <div id="repos" class="repos-section"></div>
+
+  </div>
 
   <script src="script.js"></script>
 </body>
