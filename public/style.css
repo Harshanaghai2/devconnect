@@ -182,3 +182,42 @@ body.dark-mode .theme-toggle {
 body.dark-mode .theme-toggle:hover {
   background: rgba(30, 144, 255, 0.1);
 }
+/* === Show More / Show Less Button === */
+#toggleReposBtn {
+  display: block;
+  margin: 20px auto 10px auto;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  border: 2px solid #0d6efd;
+  background: transparent;
+  color: #0d6efd;
+  transition: all 0.3s ease;
+}
+
+#toggleReposBtn:hover {
+  background: #0d6efd;
+  color: #fff;
+}
+
+/* Dark mode styles for Show More button */
+body.dark-mode #toggleReposBtn {
+  border-color: #1e90ff;
+  color: #1e90ff;
+}
+
+body.dark-mode #toggleReposBtn:hover {
+  background: #1e90ff;
+  color: #fff;
+}
+
+/* === Fade-in animation for repo cards === */
+.repo-card {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

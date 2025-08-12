@@ -76,7 +76,10 @@ function getProfile() {
     });
 }
 
-// === Fetch GitHub Repositories via Backend ===
+// === Show More / Show Less Repositories Feature ===
+let displayedRepoCount = 3;
+let allRepos = [];
+
 function getRepos(username) {
   const reposDiv = document.getElementById("repos");
 
@@ -94,22 +97,55 @@ function getRepos(username) {
         return;
       }
 
-      const topRepos = repos
-        .sort((a, b) => b.stargazers_count - a.stargazers_count)
-        .slice(0, 3);
-
-      reposDiv.innerHTML = `<h3>🔥 Top Repositories:</h3>` +
-        topRepos.map(repo => `
-          <div class="repo-card">
-            <h5><a href="${repo.html_url}" target="_blank">${repo.name}</a> ⭐ ${repo.stargazers_count}</h5>
-            <p>${repo.description || "No description provided."}</p>
-          </div>
-        `).join("");
-
-      reposDiv.classList.remove("d-none");
+      // Store sorted repositories
+      allRepos = repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+      displayedRepoCount = 3; // Reset count on each new search
+      renderRepos();
     })
     .catch(err => {
       reposDiv.innerHTML = `<p class='text-danger'>${err.message}</p>`;
       reposDiv.classList.remove("d-none");
     });
+}
+
+function renderRepos() {
+  const reposDiv = document.getElementById("repos");
+
+  // Get only repos to be displayed
+  const reposToShow = allRepos.slice(0, displayedRepoCount);
+
+  // Repo card HTML
+  const reposHtml = reposToShow.map(repo => `
+    <div class="repo-card">
+      <h5><a href="${repo.html_url}" target="_blank">${repo.name}</a> ⭐ ${repo.stargazers_count}</h5>
+      <p>${repo.description || "No description provided."}</p>
+    </div>
+  `).join("");
+
+  // Show More / Less button if more than 3 repos in total
+  let buttonHtml = "";
+  if (allRepos.length > 3) {
+    buttonHtml = `
+      <button id="toggleReposBtn" class="btn btn-outline-primary mt-3">
+        ${displayedRepoCount < allRepos.length ? "Show More" : "Show Less"}
+      </button>
+    `;
+  }
+
+  reposDiv.innerHTML = `<h3>🔥 Top Repositories:</h3>${reposHtml}${buttonHtml}`;
+  reposDiv.classList.remove("d-none");
+
+  // Button functionality
+  const toggleBtn = document.getElementById("toggleReposBtn");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      if (displayedRepoCount < allRepos.length) {
+        displayedRepoCount = Math.min(displayedRepoCount + 3, allRepos.length);
+      } else {
+        displayedRepoCount = 3;
+        window.scrollTo({ top: reposDiv.offsetTop, behavior: 'smooth' });
+      }
+      renderRepos();
+    });
+  }
 }
