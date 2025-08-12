@@ -1,0 +1,184 @@
+/* === Base Styling === */
+body {
+  background: linear-gradient(145deg, #e6f3ff, #ffffff);
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Particle Background */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Keep behind everything */
+}
+
+/* Navbar */
+.custom-navbar {
+  background: linear-gradient(90deg, #0d6efd, #1e90ff);
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.title {
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: #0d6efd;
+  text-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+}
+
+#profile, .repos-section {
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(13, 110, 253, 0.15);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+#profile {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+#profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #0d6efd;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.4);
+}
+
+.profile-details h2 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.profile-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.profile-details a {
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: 500;
+}
+
+.profile-details a:hover {
+  text-decoration: underline;
+}
+
+.repos-section h3 {
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+.repo-card {
+  padding: 20px;
+  background: rgba(248, 249, 250, 0.7);
+  border-left: 5px solid #0d6efd;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.repo-card:hover {
+  transform: translateY(-3px);
+  background: rgba(233, 236, 239, 0.9);
+}
+
+.repo-card a {
+  font-weight: 600;
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.repo-card a:hover {
+  text-decoration: underline;
+}
+
+/* === DARK MODE === */
+body.dark-mode {
+  background: linear-gradient(145deg, #0a0f1f, #141b2d);
+  color: #f1f1f1;
+}
+
+body.dark-mode .custom-navbar {
+  background: linear-gradient(90deg, #1e1e1e, #0a0f1f);
+  box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+}
+
+body.dark-mode .title {
+  color: #1e90ff;
+  text-shadow: 0 0 8px rgba(30, 144, 255, 0.7);
+}
+
+body.dark-mode #profile,
+body.dark-mode .repos-section {
+  background: rgba(20, 27, 45, 0.6);
+  box-shadow: 0 8px 30px rgba(30, 144, 255, 0.15);
+}
+
+body.dark-mode #profile img {
+  border-color: #1e90ff;
+  box-shadow: 0 0 15px rgba(30, 144, 255, 0.6);
+}
+
+body.dark-mode .profile-details p {
+  color: #ccc;
+}
+
+body.dark-mode .profile-details a {
+  color: #1e90ff;
+}
+
+body.dark-mode .repos-section h3 {
+  color: #1e90ff;
+}
+
+body.dark-mode .repo-card {
+  background: rgba(44, 44, 44, 0.6);
+  border-left-color: #1e90ff;
+}
+
+body.dark-mode .repo-card:hover {
+  background: rgba(51, 51, 51, 0.8);
+}
+
+body.dark-mode .repo-card a {
+  color: #1e90ff;
+}
+
+/* === Theme Toggle Button === */
+.theme-toggle {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .theme-toggle {
+  border-color: #1e90ff;
+  color: #1e90ff;
+}
+
+body.dark-mode .theme-toggle:hover {
+  background: rgba(30, 144, 255, 0.1);
+}

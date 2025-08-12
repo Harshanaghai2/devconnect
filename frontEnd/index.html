@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevConnect - GitHub Profile Viewer</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Header Bar -->
+  <nav class="navbar navbar-expand-lg custom-navbar px-4">
+    <a class="navbar-brand text-light fw-bold" href="#">🚀 DevConnect</a>
+    <button class="theme-toggle ms-auto" id="themeToggle">
+      🌙
+    </button>
+  </nav>
+
+  <div class="container py-5">
+    <h1 class="text-center mb-4 title">GitHub Profile Viewer</h1>
+
+    <div class="search-box d-flex gap-2 justify-content-center mb-5">
+      <input type="text" id="usernameInput" class="form-control w-50 shadow-sm search-input" placeholder="Enter GitHub username">
+      <button onclick="getProfile()" class="btn btn-primary shadow">Get Profile</button>
+    </div>
+
+    <div id="loading" class="text-center my-4 d-none">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <div id="profile" class="card p-4 mb-5 shadow-lg d-none fade-in"></div>
+    <div id="repos" class="repos-section d-none fade-in"></div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+  <!-- Updated script path (will call backend instead of GitHub API) -->
+  <script src="script.js"></script>
+  <script>
+    /* Particles.js init */
+    particlesJS.load('particles-js', 'particles.json', function() {
+      console.log('Particles.js config loaded');
+    });
+  </script>
+</body>
+</html>
